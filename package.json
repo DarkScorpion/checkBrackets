@@ -1,0 +1,19 @@
+{
+  "name": "checkBrackets",
+  "version": "0.0.9",
+  "description": "check closed brackets",
+  "main": "checkBrackets.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "^5.1.1"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": ["check", "brackets"],
+  "author": "Alex Smith <iqwz@ya.ru>",
+  "license": "MIT"
+}
