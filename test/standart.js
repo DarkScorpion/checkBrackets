@@ -3,6 +3,7 @@ var { equal } = require('assert');
 var { checkBrackets } = require('../checkBrackets.js');
 
 describe('Standart brackets: success', () => {
+
   it('Simple: {}()[]', () => {
     equal(checkBrackets('{}()[]'), true);
   })
@@ -30,6 +31,30 @@ describe('Standart brackets: success', () => {
 })
 
 describe('Standart brackets: fail', () => {
+  it('Simple: [', () => {
+    equal(checkBrackets('['), false);
+  })
+
+  it('Simple: }', () => {
+    equal(checkBrackets('}'), false);
+  })
+
+  it('Simple: }{', () => {
+    equal(checkBrackets('}{'), false);
+  })
+
+  it('Simple: )))', () => {
+    equal(checkBrackets(')))'), false);
+  })
+
+  it('Simple: [[[', () => {
+    equal(checkBrackets('[[['), false);
+  })
+
+  it('Simple: [(__}{__)]', () => {
+    equal(checkBrackets('[(}{)]'), false);
+  })
+
   it('Simple: {}()[__', () => {
     equal(checkBrackets('{}()['), false);
   })
@@ -40,10 +65,6 @@ describe('Standart brackets: fail', () => {
 
   it('Simple: }__()()()[][]{}{}', () => {
     equal(checkBrackets('}()()()[][]{}{}'), false);
-  })
-
-  it('Simple: )))', () => {
-    equal(checkBrackets(')))'), false);
   })
 
   it('Nested: {([__)}', () => {

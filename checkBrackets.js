@@ -20,18 +20,18 @@ function checkCustomBrackets(strArg, checkArr) {
     }
   })
 
-  for(var i=0; i< strArg.length; i++) {
+  for(var i = 0; i < strArg.length; i++) {
     var letter = strArg[i];
     var tmpCheck = _checkLetter(letter, tmpArr);
 
     if( tmpCheck ) {
       if(!last) last = tmpCheck;
 
-      if( letter == tmpCheck.open ) tmpCheck.openNum++;
-      if( letter == tmpCheck.close ) tmpCheck.closeNum++;
+      if( letter === tmpCheck.open ) tmpCheck.openNum++;
+      if( letter === tmpCheck.close ) tmpCheck.closeNum++;
 
-      //console.log('%s: %o, last: %o, check: %s', letter, tmpCheck, last, (last.close != tmpCheck.close && tmpCheck.openNum != tmpCheck.closeNum) );
-      if( last.close != tmpCheck.close && tmpCheck.openNum < tmpCheck.closeNum ) return false;
+      //console.log('%s: %o,\n    Last: %o,\n    Check: %s', letter, tmpCheck, last, (tmpCheck.closeNum > tmpCheck.openNum) );
+      if( tmpCheck.closeNum > tmpCheck.openNum ) return false;
 
       last = tmpCheck;
     }
@@ -39,13 +39,13 @@ function checkCustomBrackets(strArg, checkArr) {
 
   //console.log('Final: ', tmpArr);
   //console.log('Filtered: ', tmpArr.filter( v => v.openNum != v.closeNum ) );
-  return tmpArr.filter( v => v.openNum != v.closeNum ).length == 0;
+  return tmpArr.filter( v => v.openNum !== v.closeNum ).length == 0;
 }
 
 function _checkLetter(letter, checkArr) {
-  for(var i=0; i<checkArr.length; i++) {
+  for(var i = 0; i < checkArr.length; i++) {
     var v = checkArr[i];
-    if(letter == v.open || letter == v.close) return v;
+    if(letter === v.open || letter === v.close) return v;
   }
 
   return false;
