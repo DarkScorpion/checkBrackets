@@ -10,7 +10,6 @@ function checkBrackets(strArg) {
 function checkCustomBrackets(strArg, checkArr) {
   //TODO check doubles in checkArr
 
-  var last;
   var tmpArr = checkArr.map( (v) => {
     return {
       open: v.open,
@@ -25,15 +24,11 @@ function checkCustomBrackets(strArg, checkArr) {
     var tmpCheck = _checkLetter(letter, tmpArr);
 
     if( tmpCheck ) {
-      if(!last) last = tmpCheck;
-
       if( letter === tmpCheck.open ) tmpCheck.openNum++;
       if( letter === tmpCheck.close ) tmpCheck.closeNum++;
 
-      //console.log('%s: %o,\n    Last: %o,\n    Check: %s', letter, tmpCheck, last, (tmpCheck.closeNum > tmpCheck.openNum) );
+      //console.log('%s: %o, check: %s', letter, tmpCheck, (tmpCheck.closeNum > tmpCheck.openNum) );
       if( tmpCheck.closeNum > tmpCheck.openNum ) return false;
-
-      last = tmpCheck;
     }
   }
 

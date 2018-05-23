@@ -75,12 +75,16 @@ describe('Standart brackets: fail', () => {
     equal(checkBrackets('{([])}}'), false);
   })
 
-  it('Nested: aaa()bbb{{{aaaa}}_)', () => {
-    equal(checkBrackets('aaa()bbb{{{aaaa}})'), false);
+  it('Nested: aaa()bbb{{{ccc}}__)', () => {
+    equal(checkBrackets('aaa()bbb{{{ccc}})'), false);
   })
 
-  it('Nested: {bbbb}aaaa)c)c)', () => {
+  it('Nested: {bbbb__}aaaa)c)c)', () => {
     equal(checkBrackets('{bbbb}aaaa)c)c)'), false);
+  })
+
+  it('Nested: {bb(b)b}aa[][a]a__)c}c]', () => {
+    equal(checkBrackets('{b(b)b}a[][a]a)c}c]'), false);
   })
 
 })
